@@ -44,7 +44,7 @@
                 <div class="col-lg-9 p-4 d-flex flex-column position-static">
                     <strong class="d-inline-block mb-2 text-primary"><?=++$ind?></strong>
                     <h3 class="mb-0"><?=$data['title']?></h3>
-                    <p class="card-text mb-auto"><?= strlen($data['description']) >30? substr($data['description'],0,28)."....":$data['description']?></p>
+                    <p class="card-text mb-auto"><?=strlen($data['description']) >30? substr($data['description'],0,28)."....":$data['description']?></p>
                     <ul class="list-group my-3">
                         <li class="list-group-item"><strong>Call to Action text :</strong> <?=$data['call_to_action_text']?></li>
                         <li class="list-group-item"><strong>Call to Action url :</strong> <?=$data['call_to_action_link']?></li>
@@ -53,8 +53,8 @@
                     </ul>
                     <div class="button d-flex">
                         <a href="../controller/bannerActive.php?id=<?=$data['id']?>" class="btn btn-<?=$data['status']==0? "success":"warning"?> mx-2"><?=$data['status']==0? "Active":"Deactive"?></a>
-                        <a href="#" class="btn btn-primary mx-2">Edit</a>
-                        <a href="../controller/bannerDelete.php?id=<?=$data['id']?>" class="btn btn-danger mx-2">Delete</a>
+                        <a href="./bannerEditor.php?id=<?=$data['id']?>" class="btn btn-primary mx-2">Edit</a>
+                        <a href="../controller/bannerDelete.php?id=<?=$data['id']?>" class="btn btn-danger mx-2" id="Delete">Delete</a>
                     </div>
                 </div>
                 <div class="col-lg-3 d-none d-lg-block">
@@ -67,6 +67,37 @@
     </main>
   </div>
 </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+  const Delete=document.querySelectorAll('#Delete');
+
+  Delete.forEach((del)=>{
+    del.addEventListener('click',(e)=>{
+        console.log(e.target)
+        e.preventDefault();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+              location.href=e.target.getAttribute('href');       
+              // Swal.fire(
+              //     'Deleted!',
+              //     'Your file has been deleted.',
+              //     'success'
+              //   )       
+            }
+        })
+    })
+  })
+</script>
 
 <?php
   include_once 'inc/daseboard_footer.php';

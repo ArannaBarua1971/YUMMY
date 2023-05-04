@@ -15,6 +15,9 @@
     }
 
     bannerImg.addEventListener('change',setBannerImg);
+
+  
+
 </script>
 
 </body>
