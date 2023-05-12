@@ -28,6 +28,18 @@
               all banner
             </a>
           </li>
+          <li class="nav-item ">
+            <a class="nav-link " href="menu.php">
+              <span data-feather="file" class="align-text-bottom"></span>
+              add menu
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link " href="food.php">
+              <span data-feather="file" class="align-text-bottom"></span>
+              add food
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
